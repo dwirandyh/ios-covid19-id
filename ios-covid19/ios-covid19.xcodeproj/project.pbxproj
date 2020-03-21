@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8DBCF94024263E9700C337D2 /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBCF93F24263E9700C337D2 /* Summary.swift */; };
+		8DBCF9432426436400C337D2 /* CovidService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBCF9422426436400C337D2 /* CovidService.swift */; };
+		8DBCF945242649F800C337D2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBCF944242649F800C337D2 /* HomeViewModel.swift */; };
+		8DBCF948242653CC00C337D2 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBCF947242653CC00C337D2 /* String+Extension.swift */; };
 		8DE90DFA2425BBD90081E08C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE90DF92425BBD90081E08C /* AppDelegate.swift */; };
 		8DE90DFC2425BBD90081E08C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE90DFB2425BBD90081E08C /* SceneDelegate.swift */; };
 		8DE90DFE2425BBD90081E08C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE90DFD2425BBD90081E08C /* ContentView.swift */; };
@@ -33,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8DBCF93F24263E9700C337D2 /* Summary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
+		8DBCF9422426436400C337D2 /* CovidService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidService.swift; sourceTree = "<group>"; };
+		8DBCF944242649F800C337D2 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		8DBCF947242653CC00C337D2 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		8DE90DF62425BBD90081E08C /* ios-covid19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-covid19.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DE90DF92425BBD90081E08C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DE90DFB2425BBD90081E08C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +78,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8DBCF93E24263E4800C337D2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8DBCF93F24263E9700C337D2 /* Summary.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8DBCF941242642DF00C337D2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8DBCF9422426436400C337D2 /* CovidService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8DBCF946242653BD00C337D2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8DBCF947242653CC00C337D2 /* String+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		8DE90DED2425BBD90081E08C = {
 			isa = PBXGroup;
 			children = (
@@ -91,7 +123,10 @@
 		8DE90DF82425BBD90081E08C /* ios-covid19 */ = {
 			isa = PBXGroup;
 			children = (
-				8DE90E1D2425C05E0081E08C /* ViewModel */,
+				8DBCF946242653BD00C337D2 /* Extension */,
+				8DBCF93E24263E4800C337D2 /* Models */,
+				8DBCF941242642DF00C337D2 /* Services */,
+				8DE90E1D2425C05E0081E08C /* ViewModels */,
 				8DE90E1C2425BEB70081E08C /* Views */,
 				8DE90DF92425BBD90081E08C /* AppDelegate.swift */,
 				8DE90DFB2425BBD90081E08C /* SceneDelegate.swift */,
@@ -132,11 +167,12 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		8DE90E1D2425C05E0081E08C /* ViewModel */ = {
+		8DE90E1D2425C05E0081E08C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				8DBCF944242649F800C337D2 /* HomeViewModel.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		8DE90E262425FADE0081E08C /* Home */ = {
@@ -270,8 +306,12 @@
 				8DE90E282425FAF80081E08C /* StatisticView.swift in Sources */,
 				8DE90DFC2425BBD90081E08C /* SceneDelegate.swift in Sources */,
 				8DE90E232425C2EA0081E08C /* Link.swift in Sources */,
+				8DBCF9432426436400C337D2 /* CovidService.swift in Sources */,
 				8DE90E1F2425C0E30081E08C /* Home.swift in Sources */,
+				8DBCF948242653CC00C337D2 /* String+Extension.swift in Sources */,
 				8DE90E252425F2B10081E08C /* HostingController.swift in Sources */,
+				8DBCF945242649F800C337D2 /* HomeViewModel.swift in Sources */,
+				8DBCF94024263E9700C337D2 /* Summary.swift in Sources */,
 				8DE90E212425C28C0081E08C /* News.swift in Sources */,
 				8DE90E2A2425FB700081E08C /* RequirementView.swift in Sources */,
 				8DE90DFE2425BBD90081E08C /* ContentView.swift in Sources */,
