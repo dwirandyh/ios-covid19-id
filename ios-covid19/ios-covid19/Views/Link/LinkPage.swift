@@ -13,33 +13,36 @@ struct LinkPage: View {
     @ObservedObject var linkViewModel : LinkViewModel = LinkViewModel()
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 30){
-                VStack(alignment: .leading, spacing: 8){
-                    Text("Important Links").font(.title).fontWeight(.bold).foregroundColor(Color.white)
+        NavigationView {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 30){
+                    VStack(alignment: .leading, spacing: 8){
+                        Text("Important Links").font(.title).fontWeight(.bold).foregroundColor(Color.white)
+                        HStack{
+                            Text("Important link about Covid-19").foregroundColor(Color("textColorWhite"))
+                        }
+                    }.padding(.top, 20)
+                    
+                    
+                    VStack(spacing: 16){
+                        ForEach(self.linkViewModel.links){ (link: ImportantLink) in
+                            LinkItem(onClick:{
+                                self.linkViewModel.openUrl(stringUrl: link.url)
+                            }, title: link.title)
+                        }
+                    }
+                    
                     HStack{
-                        Text("Important link about Covid-19").foregroundColor(Color("textColorWhite"))
+                        Spacer()
                     }
-                }.padding(.top, 20)
-                
-                
-                VStack(spacing: 16){
-                    ForEach(self.linkViewModel.links){ (link: ImportantLink) in
-                        LinkItem(onClick:{
-                            self.linkViewModel.openUrl(stringUrl: link.url)
-                        }, title: link.title)
-                    }
-                }
-                
-                HStack{
-                    Spacer()
-                }
-            }.padding([.trailing, .leading], 20)
-        }
-        .onAppear(perform: {
-            self.linkViewModel.showImportantLink()
-        })
+                }.padding([.trailing, .leading], 20)
+            }
             .background(Color("background"))
+            .navigationBarTitle("Links", displayMode: .inline)
+            .onAppear(perform: {
+                self.linkViewModel.showImportantLink()
+            })
+        }
     }
 }
 

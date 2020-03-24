@@ -14,24 +14,27 @@ struct HomePage: View {
     @ObservedObject var homeViewModel : HomeViewModel = HomeViewModel()
     
     var body: some View {
-        ScrollView{
-            VStack {
-                if homeViewModel.summary != nil {
-                    StatisticView(summary: self.homeViewModel.summary!)
+        NavigationView{
+            ScrollView{
+                VStack {
+                    if homeViewModel.summary != nil {
+                        StatisticView(summary: self.homeViewModel.summary!)
+                    }
+                    
+                    RequirementView()
                 }
+                .padding([.trailing, .leading], 20)
                 
-                RequirementView()
             }
-            .padding([.trailing, .leading], 20)
-            
+            .alert(isPresented: self.$homeViewModel.isError) {
+                Alert(title: Text("Someting went wrong"), message: Text("Could not retrieve data from server"), dismissButton: .default(Text("Got it!")))
+            }
+            .background(Color("background"))
+            .navigationBarTitle("Home", displayMode: .inline)
+            .onAppear(perform: {
+                self.homeViewModel.showSummary()
+            })
         }
-        .alert(isPresented: self.$homeViewModel.isError) {
-            Alert(title: Text("Someting went wrong"), message: Text("Could not retrieve data from server"), dismissButton: .default(Text("Got it!")))
-        }
-        .background(Color("background"))
-        .onAppear(perform: {
-            self.homeViewModel.showSummary()
-        })
     }
 }
 
