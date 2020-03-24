@@ -8,8 +8,9 @@
 
 import SwiftUI
 
-struct Home: View {
+struct HomePage: View {
     
+    @State private var showingAlert = true
     @ObservedObject var homeViewModel : HomeViewModel = HomeViewModel()
     
     var body: some View {
@@ -24,6 +25,9 @@ struct Home: View {
             .padding([.trailing, .leading], 20)
             
         }
+        .alert(isPresented: self.$homeViewModel.isError) {
+            Alert(title: Text("Someting went wrong"), message: Text("Could not retrieve data from server"), dismissButton: .default(Text("Got it!")))
+        }
         .background(Color("background"))
         .onAppear(perform: {
             self.homeViewModel.showSummary()
@@ -35,11 +39,11 @@ struct Home: View {
 struct Statistics_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            Home()
+            HomePage()
                 .previewDevice(PreviewDevice(rawValue: "iPhone SE"))
                 .previewDisplayName("iPhone SE")
             
-            Home()
+            HomePage()
                 .previewDevice(PreviewDevice(rawValue: "iPhone XS Max"))
                 .previewDisplayName("iPhone XS Max")
         }

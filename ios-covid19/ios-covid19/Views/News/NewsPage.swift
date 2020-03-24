@@ -8,7 +8,10 @@
 
 import SwiftUI
 
-struct News: View {
+struct NewsPage: View {
+    
+    @ObservedObject var newsViewModel : NewsViewModel = NewsViewModel()
+    
     var body: some View {
         ScrollView{
             VStack(alignment: .leading, spacing: 30){
@@ -19,23 +22,33 @@ struct News: View {
                     }
                 }.padding(.top, 20)
                 
-                VStack(spacing: 16){
-                    NewsItem()
-                    
-                    NewsItem()
-                    
-                    NewsItem()
-                    
-                    NewsItem()
-                    
-                    NewsItem()
+                if self.newsViewModel.news != nil {
+                    List((self.newsViewModel.news?.pageProps.posts)!) { news in
+                        NewsItem()
+                    }
                 }
+                
+//                VStack(spacing: 16){
+//                    NewsItem()
+//
+//                    NewsItem()
+//
+//                    NewsItem()
+//
+//                    NewsItem()
+//
+//                    NewsItem()
+//                }
                 
                 HStack{
                     Spacer()
                 }
             }.padding([.trailing, .leading], 20)
-        }.background(Color("background"))
+        }
+        .onAppear(perform: {
+            self.newsViewModel.showNews()
+        })
+        .background(Color("background"))
     }
 }
 
@@ -75,7 +88,7 @@ struct NewsItem: View {
 struct News_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            News()
+            NewsPage()
                 .previewDevice(PreviewDevice(rawValue: "iPhone SE"))
                 .previewDisplayName("iPhone SE")
             

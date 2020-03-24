@@ -19,16 +19,16 @@ struct ContentView: View {
         ZStack{
             Color("background").edgesIgnoringSafeArea(.all)
             TabView{
-                Home().tabItem{
+                HomePage().tabItem{
                     Image(systemName: "chart.bar.fill")
                     Text("Home")
                 }
-                News().tabItem{
+                NewsPage().tabItem{
                     Image(systemName: "archivebox.fill")
-                    Text("Information")
+                    Text("News")
                 }
                 
-                Link().tabItem{
+                LinkPage().tabItem{
                     Image(systemName: "link")
                     Text("Links")
                 }

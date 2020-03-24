@@ -13,14 +13,16 @@ class HomeViewModel : ObservableObject {
     private let repository: CovidRepository
     
     @Published var summary: Summary?
+    @Published var isError: Bool = false
     
     init(repository: CovidRepository = CovidService.instance) {
         self.repository = repository
     }
     
     func showSummary(){
-        self.repository.fetchSummary { (summary) in
+        self.repository.fetchSummary { (summary, isError) in
             DispatchQueue.main.async {
+                self.isError = isError
                 self.summary = summary
             }
         }

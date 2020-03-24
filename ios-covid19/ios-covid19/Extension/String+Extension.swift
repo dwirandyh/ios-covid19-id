@@ -9,5 +9,20 @@
 import Foundation
 
 extension String {
-    
+    func formatDate() -> String {
+        // ISO8601
+        let isoDate = self
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let date = dateFormatter.date(from: isoDate)
+        
+        if let formattedDate = date {
+            let resultDateFormatter = DateFormatter()
+            resultDateFormatter.dateFormat = "MMMM dd, yyyy HH:mm:ss"
+            return resultDateFormatter.string(from: formattedDate)
+        } else {
+            return self
+        }
+        
+    }
 }

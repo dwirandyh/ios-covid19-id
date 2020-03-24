@@ -17,7 +17,7 @@ struct StatisticView: View {
                 Text("Covid-19 Indonesia").font(.title).fontWeight(.bold).foregroundColor(Color.white)
                 HStack{
                     Text("Last updated:").foregroundColor(Color("textColorWhite"))
-                    Text(summary.metadata.lastUpdatedAt).foregroundColor(Color.white).fontWeight(.medium)
+                    Text(summary.metadata.lastUpdatedAt.formatDate()).foregroundColor(Color.white).fontWeight(.medium)
                 }
             }.padding(.top, 20)
             HStack{
