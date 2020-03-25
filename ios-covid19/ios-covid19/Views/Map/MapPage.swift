@@ -14,7 +14,7 @@ struct MapPage: View {
     
     var body: some View {
         VStack{
-            MapView()
+            MapView(province: self.mapViewModel.provinces)
         }.onAppear {
             self.mapViewModel.showProvinceData()
         }

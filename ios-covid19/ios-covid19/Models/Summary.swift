@@ -15,6 +15,19 @@ struct Summary: Decodable, Identifiable {
     let deaths: Deaths
     let activeCare: ActiveCare
     let metadata: Metadata
+    
+    
+    var percentageTreated: Int {
+        return Int((Float(self.activeCare.value) / Float(self.confirmed.value)) * 100)
+    }
+    
+    var percentageRecovered: Int {
+        return Int((Float(self.recovered.value) / Float(self.confirmed.value)) * 100)
+    }
+    
+    var percentageDeath: Int {
+        return Int((Float(self.deaths.value) / Float(self.confirmed.value)) * 100)
+    }
 }
 
 struct Confirmed: Decodable {

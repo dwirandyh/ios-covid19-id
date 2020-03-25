@@ -28,12 +28,26 @@ class MapService: MapRepository {
             } else {
                 do {
                     let result = try JSONDecoder().decode([Province].self, from: data!)
-                    completion(result)
+                    let provinces = self.getProvinceLatLang(provinces: result)
+                    completion(provinces)
                 }catch {
                     completion(nil)
                 }
             }
         }.resume()
+    }
+    
+    private func getProvinceLatLang(provinces:[Province]) -> [Province] {
+        return provinces.map { (province: Province) -> Province in
+            let provinceLatLang = ProvinceLatLang.defaultValue.first { (provinceLatLang) -> Bool in
+                return provinceLatLang.provinceId == province.attributes.Kode_Provi
+            }
+
+            var mutableProvince = province
+            mutableProvince.attributes.latitude = provinceLatLang?.latitude
+            mutableProvince.attributes.longitude = provinceLatLang?.longitude
+            return mutableProvince
+        }
     }
     
     private func generateUrl(path: String) -> URL {

@@ -9,6 +9,13 @@
 import SwiftUI
 
 class HostingController: UIHostingController<ContentView> {
+    
+    override func viewDidLoad() {
+        if #available(iOS 13.0, *) {
+            self.overrideUserInterfaceStyle = .dark
+        }
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }

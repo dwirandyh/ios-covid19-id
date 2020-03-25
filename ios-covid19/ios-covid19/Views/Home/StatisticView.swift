@@ -13,20 +13,20 @@ struct StatisticView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 30){
-            VStack(alignment: .leading, spacing: 8){
+            VStack(alignment: .leading){
                 Text("Covid-19 Indonesia").font(.title).fontWeight(.bold).foregroundColor(Color.white)
                 HStack{
                     Text("Last updated:").foregroundColor(Color("textColorWhite"))
                     Text(summary.metadata.lastUpdatedAt.formatDate()).foregroundColor(Color.white).fontWeight(.medium)
                 }
-            }.padding(.top, 20)
+            }
             HStack{
                 HStack{
                     Spacer()
                     VStack(spacing: 12){
                         Text("\(self.summary.confirmed.value)").foregroundColor(Color("textConfirm")).font(.largeTitle).fontWeight(.bold)
                         Text("Confirmed").foregroundColor(Color("textColorWhite"))
-                    }.frame(width: 100).padding()
+                    }.frame(width: 100, height: 80).padding()
                     Spacer()
                 }.background(Color("tile"))
                 
@@ -38,7 +38,7 @@ struct StatisticView: View {
                     VStack(spacing: 12){
                         Text("\(self.summary.activeCare.value)").foregroundColor(Color("textInCare")).font(.largeTitle).fontWeight(.bold)
                         Text("Treated").foregroundColor(Color("textColorWhite"))
-                    }.frame(width: 100)
+                    }.frame(width: 100, height: 80)
                         .padding()
                     Spacer()
                 }.background(Color("tile"))
@@ -48,9 +48,11 @@ struct StatisticView: View {
                 HStack{
                     Spacer()
                     VStack(spacing: 12){
-                        Text("\(self.summary.recovered.value)").foregroundColor(Color("textRecover")).font(.largeTitle).fontWeight(.bold)
+                        HStack(spacing:4){ Text("\(self.summary.recovered.value)").foregroundColor(Color("textRecover")).font(.largeTitle).fontWeight(.bold)
+                            Text("(\(self.summary.percentageRecovered)%)").foregroundColor(Color("textRecoverPercentage"))
+                        }
                         Text("Recovered").foregroundColor(Color("textColorWhite"))
-                    }.frame(width: 100).padding()
+                    }.frame(width: 100, height: 80).padding()
                     Spacer()
                 }.background(Color("tile"))
                 
@@ -59,23 +61,15 @@ struct StatisticView: View {
                 HStack{
                     Spacer()
                     VStack(spacing: 12){
-                        Text("\(self.summary.deaths.value)").foregroundColor(Color("textDied")).font(.largeTitle).fontWeight(.bold)
+                        HStack(spacing:4){ Text("\(self.summary.deaths.value)").foregroundColor(Color("textDied")).font(.largeTitle).fontWeight(.bold)
+                            Text("(\(self.summary.percentageDeath)%)").foregroundColor(Color("textDiedPercentage"))
+                        }
                         Text("Death").foregroundColor(Color("textColorWhite"))
-                    }.frame(width: 100).padding()
+                    }.frame(width: 100, height: 80).padding()
                     Spacer()
                 }.background(Color("tile"))
             }
-            
-            HStack{
-                Spacer()
-                Button(action: {}){
-                    Text("Show Daily Statistics")
-                }.foregroundColor(Color.white).font(.headline)
-                    .padding()
-                    .border(Color("tile"), width: 3)
-                Spacer()
-            }
-        }
+        }.padding([.top, .bottom], 20)
     }
 }
 
