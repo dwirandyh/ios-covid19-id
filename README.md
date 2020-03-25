@@ -4,7 +4,7 @@ This is a repository of iOS Covid-19 tracker application built with SwiftUI
 ![Alt text](https://github.com/dwirandyh/ios-covid19-id/blob/master/screenshot/screenshot.png?raw=true)
 
 ### Data Source
-The data source used is taken from [kawalcorona.com](https://kawalcorona.com/) and also [KawalCovid19.id]
+The data source used is taken from [kawalcorona.com](https://kawalcorona.com/) and also [KawalCovid19.id](https://kawalcovid19.id/)
 
 ### Features!
 
