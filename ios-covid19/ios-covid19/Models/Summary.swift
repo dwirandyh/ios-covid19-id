@@ -16,16 +16,15 @@ struct Summary: Decodable, Identifiable {
     let activeCare: ActiveCare
     let metadata: Metadata
     
-    
-    var percentageTreated: Int {
+    func calculatePercentageTreated() -> Int {
         return Int((Float(self.activeCare.value) / Float(self.confirmed.value)) * 100)
     }
     
-    var percentageRecovered: Int {
+    func calculatePercentageRecovered() -> Int {
         return Int((Float(self.recovered.value) / Float(self.confirmed.value)) * 100)
     }
     
-    var percentageDeath: Int {
+    func calculatePercentageDeath() -> Int {
         return Int((Float(self.deaths.value) / Float(self.confirmed.value)) * 100)
     }
 }

@@ -18,68 +18,42 @@ struct RequirementView: View {
             Text("Help you prevent viruses better").foregroundColor(Color("textColorWhite"))
             
             HStack(alignment: .center, spacing: 20){
-                GeometryReader { geometry in
-                    
-                    VStack{
-                        VStack{
-                            Image("maskIcon")
-                                .resizable()
-                                .renderingMode(.original).frame(width: geometry.size.width * 0.7, height: geometry.size.width * 0.7)
-                        }
-                        .frame(width: geometry.size.width, height: geometry.size.width)
-                        .background(Color("maskBg"))
-                        .mask(Circle())
-                        
-                        Text("Mask").fontWeight(.semibold).foregroundColor(Color.white)
-                    }
-                }
+                Thumbnail(iconName: "maskIcon", backgroundColor: Color("maskBg"), title: "Mask")
                 
-                GeometryReader { geometry in
-                    VStack{
-                        VStack{
-                            Image("glovesIcon")
-                                .resizable()
-                                .renderingMode(.original).frame(width: geometry.size.width * 0.5, height: geometry.size.width * 0.5)
-                        }
-                        .frame(width: geometry.size.width, height: geometry.size.width)
-                        .background(Color("glovesBg"))
-                        .mask(Circle())
-                        
-                        Text("Gloves").fontWeight(.semibold).foregroundColor(Color.white)
-                    }
-                }
+                Thumbnail(iconName: "glovesIcon", backgroundColor: Color("glovesBg"), title: "Gloves")
                 
-                GeometryReader { geometry in
-                    VStack{
-                        VStack{
-                            Image("soapIcon")
-                                .resizable()
-                                .renderingMode(.original).frame(width: geometry.size.width * 0.5, height: geometry.size.width * 0.5)
-                        }
-                        .frame(width: geometry.size.width, height: geometry.size.width)
-                        .background(Color("soapBg"))
-                        .mask(Circle())
-                        
-                        Text("Soap").fontWeight(.semibold).foregroundColor(Color.white)
-                    }
-                }
+                Thumbnail(iconName: "soapIcon", backgroundColor: Color("soapBg"), title: "Soap")
                 
-                GeometryReader { geometry in
-                    VStack{
-                        VStack{
-                            Image("vitaminIcon")
-                                .resizable()
-                                .renderingMode(.original).frame(width: geometry.size.width * 0.5, height: geometry.size.width * 0.5)
-                        }
-                        .frame(width: geometry.size.width, height: geometry.size.width)
-                        .background(Color("vitaminBg"))
-                        .mask(Circle())
-                        
-                        Text("Vitamin").fontWeight(.semibold).foregroundColor(Color.white)
-                    }
+                Thumbnail(iconName: "vitaminIcon", backgroundColor: Color("vitaminBg"), title: "Vitamin")
+                
+            }.frame(height: 120)
+                .padding(.top, 16)
+        }
+    }
+}
+
+struct Thumbnail : View {
+    let iconName: String
+    let backgroundColor: Color
+    let title: String
+    
+    var body: some View {
+        GeometryReader { geometry in
+            VStack {
+                VStack{
+                    Image(self.iconName)
+                        .resizable()
+                        .renderingMode(.original)
+                        .frame(width: geometry.size.width * 0.5, height: geometry.size.width * 0.5)
                 }
-            }.frame(height: 150)
-            .padding(.top, 16)
+                .frame(width: geometry.size.width, height: geometry.size.width)
+                .background(self.backgroundColor)
+                .mask(Circle())
+                
+                Text(self.title)
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color.white)
+            }
         }
     }
 }

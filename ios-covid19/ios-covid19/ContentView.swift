@@ -26,20 +26,29 @@ struct ContentView: View {
             Color("background").edgesIgnoringSafeArea(.all)
             TabView{
                 HomePage().tabItem{
-                    Image(systemName: "house.fill")
-                    Text("Home")
+                    TabIcon(title: "Home", icon: Image(systemName: "house.fill"))
                 }
                 
                 MapPage().tabItem{
-                    Image(systemName: "map.fill")
-                    Text("Map")
+                    TabIcon(title: "Map", icon: Image(systemName: "map.fill"))
                 }.edgesIgnoringSafeArea(.top)
                 
                 LinkPage().tabItem{
-                    Image(systemName: "link")
-                    Text("Links")
+                    TabIcon(title: "Links", icon: Image(systemName: "link"))
                 }
             }.edgesIgnoringSafeArea(.top)
+        }
+    }
+}
+
+struct TabIcon: View {
+    let title: String
+    let icon: Image
+    
+    var body: some View {
+        VStack {
+            self.icon
+            Text(title)
         }
     }
 }
